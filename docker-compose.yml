@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: iot-firmware-update-backend:local
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 8
+
+  simulator:
+    build:
+      context: ./simulator
+      dockerfile: Dockerfile
+    image: iot-firmware-update-simulator:local
+    depends_on:
+      - backend
+    environment:
+      - BACKEND_URL=http://backend:3000
