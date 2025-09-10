@@ -1,10 +1,7 @@
-import { readdirSync } from 'node:fs';
 import type { FastifyInstance } from 'fastify';
 
+import mainRoutes from '../routes/mainRoutes';
 
 export const setupRoutes = (app: FastifyInstance): void => {
-  readdirSync(`${__dirname}/../routes`).map(async file => {
-    const route = require(`../routes/${file}`);
-    app.register(route);
-  });
+  app.register(mainRoutes);
 };

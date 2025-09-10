@@ -1,4 +1,4 @@
-import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
 const mainRoutes: FastifyPluginAsyncZod = async app => {
   app.get('/', async (request, reply) => {
