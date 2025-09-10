@@ -1,0 +1,1 @@
+console.log('[SIMULATOR] Service is running.');

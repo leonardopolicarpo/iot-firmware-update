@@ -1,4 +1,3 @@
-# simulator/Dockerfile
 FROM node:22-alpine AS base
 WORKDIR /usr/src/simulator
 COPY package*.json ./
